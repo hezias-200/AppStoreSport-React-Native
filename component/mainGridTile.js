@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   title:{
     fontFamily:"Revolvingdor",
     fontSize:22,
-    color:"#A4C639",
+    color:"#5FD213",
   },
   bgImage:{
     width:'95%',

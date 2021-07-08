@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     },
     // Add style to title:
     titleContainer: {
-      backgroundColor: "rgba(0,0,0,0.5)", // black color, bit transparent (0.5)
+      backgroundColor: "#E4FC02", 
       paddingVertical: 5,
       paddingHorizontal: 15,
    
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
     title: {
       fontFamily: "Revolvingdor",
       fontSize: 20,
-      color: "white",
+      color: "black",
       textAlign: "center",
     justifyContent:'center',
 
     },
     price:{
-      color:"white",
+      color:"black",
       textAlign:"center",
       fontSize:20,
       fontWeight:"bold"

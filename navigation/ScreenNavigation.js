@@ -52,7 +52,7 @@ const ScreenNavigator = createStackNavigator(
             headerStyle: {
                 backgroundColor: Colors.Primary
             },
-            headerTintColor: 'white',
+            headerTintColor: 'black',
 
         }
     }

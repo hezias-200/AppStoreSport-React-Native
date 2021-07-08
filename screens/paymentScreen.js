@@ -23,8 +23,6 @@ const paymentScreen = props => {
   //
   const emailRegex = /\S+@\S+\.\S+/;
 
-  let flagM =false
-  let flagY = false
   const onSubmit = data => {
     console.log(data);
     if (emailRegex.test(data.email)) {
@@ -43,31 +41,36 @@ const paymentScreen = props => {
 
   };
   const cardInfo = () => {
-    console.log();
-    if (getMonth > 0 && getMonth < 13)
+    if (getMonth > 0 && getMonth < 13 && getYear > 21) {
       setValidMonth(true)
-    if (getYear > 21)
       setValidYear(true)
-    if (validMonth && validYear) {
-      setMonth(data.month)
-      flagM = true
-      setYear(data.year)
-      flagY = true
     }
-    if (flagM && flagY) {
+    if (validMonth && validYear) {
       props.navigation.navigate({
         routeName: 'thankyou',
       });
       Alert.alert("last")
 
     }
-
   }
 
   let continuePay;
   if (isValidMail && isValidPhone) {
     continuePay = (
       <View>
+        <Text></Text>
+        <Text style={styles.text}>selcet a delivery:</Text>
+        <TouchableOpacity onPress={() => addDelivery(sumCart + 5)}>
+          <Text style={styles.delivery}>
+            regular delivery: 5$</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => addDelivery(sumCart + 15)}>
+          <Text style={styles.delivery}>express delivery: 15$</Text>
+        </TouchableOpacity>
+        <Text></Text>
+
+        <Text style={styles.cart}> The Total With The Delivery is: {withDelivery}$</Text>
+
         <TextInput
           style={styles.TextInputStyle}
           placeholder="Card Number"
@@ -80,24 +83,24 @@ const paymentScreen = props => {
             placeholder="Month"
             keyboardType="numeric"
             maxLength={2}
-            onEndEditing={txt => setMonth(txt)}
+            onChangeText={txt => setMonth(Number(txt))}
           />
           <TextInput style={styles.TextInputStyle}
             placeholder="Year"
             keyboardType="numeric"
             maxLength={2}
-            onEndEditing={txt => setYear(txt)}
+            onChangeText={txt => setYear(Number(txt))}
+          />
+          <TextInput style={styles.TextInputStyle}
+            placeholder="CVV"
+            keyboardType="numeric"
+            maxLength={3}
           />
         </View>
         <TextInput style={styles.TextInputStyle}
-          placeholder="CVV"
-          keyboardType="numeric"
-          maxLength={3}
-          />
-        <TextInput style={styles.TextInputStyle}
           placeholder="Card Holder Name"
         />
-        <Button title="pay" onPress={cardInfo} />
+        <Button color={"#5AEB59"} title="pay" onPress={cardInfo} />
       </View >
     )
   }
@@ -194,19 +197,7 @@ const paymentScreen = props => {
       />
       {errors.address && <Text>This is required.</Text>}
       <Text style={styles.cart}> The Total is: {sumCart}$</Text>
-      <Text></Text>
-      <Text style={styles.text}>selcet a delivery:</Text>
-      <TouchableOpacity onPress={() => addDelivery(sumCart + 5)}>
-        <Text style={styles.delivery}>
-          regulr delivery: 5$</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => addDelivery(sumCart + 15)}>
-        <Text style={styles.delivery}>expres delivery: 15$</Text>
-      </TouchableOpacity>
-      <Text></Text>
-
-      <Text style={styles.cart}> The Total With The Delivery is: {withDelivery}$</Text>
-      <Button color={'black'}  title="contiue" onPress={handleSubmit(onSubmit)} />
+      <Button color={"#5AEB59"} title="contiue" onPress={handleSubmit(onSubmit)} />
       {continuePay}
 
     </ScrollView>
@@ -218,8 +209,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   TextInputStyle: {
     textAlign: 'center',
@@ -249,15 +238,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     color: "grey",
-    fontSize: 20
+    fontSize: 20,
+    borderWidth: 1,
+    borderColor: "black",
   },
   text: {
     textAlign: 'left',
     fontWeight: "bold",
-    fontFamily:'system-ui',
     fontSize: 18,
-
-
   },
   success: {
     textAlign: 'center',
@@ -290,32 +278,15 @@ const styles = StyleSheet.create({
   clear: {
     backgroundColor: "white"
   },
-  btn:{
-    backgroundColor:'black',
+  btn: {
+    backgroundColor: 'black',
     justifyContent: 'center',
-    borderRadius:10,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
-    fontSize:20,
-    fontWeight:"bold"
+    fontSize: 20,
+    fontWeight: "bold"
   },
 });
 
 export default paymentScreen
-/* <View>
-      <SelectPicker
-        onValueChange={(value) => {
-          // Do anything you want with the value.
-          // For example, save in state.
-          this.setState({
-            selected: value
-          })
-        }}
-        selected={this.state.selected}
-        >
-        <SelectPicker.Item label="Apple" value="apple" />
-        <SelectPicker.Item label="Banana" value="banana" />
-        <SelectPicker.Item label="Orange" value="orange" />
-      </SelectPicker>
-
-      </View>*/

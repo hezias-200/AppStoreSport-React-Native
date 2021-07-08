@@ -79,21 +79,27 @@ const cartScreen = props => {
   }, [cart])
   return (
     <ScrollView style={styles.container}>
+      <Text style={styles.cart}>MY CART</Text>
+      <Text></Text>
       {unicCart.map(item =>
-        <View style={{ flexDirection: 'row' }}>
-          <Text>{item.productName.slice(0, 15)} - price:{item.price}$</Text>
-          <Text> Count: X {counter[item.productName]}</Text>
-          <Button onPress={() => deleteItem(item.productName)} title="X" />
+        <View style={styles.productditels}>
+          <Text style={styles.product}>{item.productName.slice(0, 20)} </Text>
+          <Text style={styles.product}> price:{item.price}$</Text>
+          <Text style={styles.product}> Count: X {counter[item.productName]}</Text>
+          <Button onPress={() => deleteItem(item.productName)} color={"#5AEB59"}title="X" />
         </View>)}
-      <Text >Total Price :{sumPrice + '$'}</Text>
+        <Text></Text>
+      <Text style={styles.total}>Total Price :{sumPrice + '$'}</Text>
       <Text></Text>
-      <View></View>
-      <TextInput placeholder="Cupon" onChangeText={(txt) => setCouponInput(txt)} style={{ borderWidth: 1 }} />
+      <View style={styles.discount}>
+      <TextInput placeholder="Cupon" onChangeText={(txt) => setCouponInput(txt)} style={styles.cupon} />
       <Text></Text>
-
-      <Button color={'black'} fontWeight={'bold'} title="set Discount" onPress={discount} />
+      <Button color={'#5AEB59'} fontWeight={'bold'} title="set Discount" onPress={discount} />
+      </View>
       <Text></Text>
-      <Button color={'black'} title="Payment" onPress={chackCart} />
+      <View style={styles.discount}>
+         <Button color={'#5AEB59'} title="Payment" onPress={chackCart} />
+      </View>
     </ScrollView>
   );
 }
@@ -104,16 +110,35 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    // alignItems: 'center',
   },
-  btn:{
-    backgroundColor:'black',
-    justifyContent: 'center',
-    borderRadius:10,
+  total:{
+    fontSize:22,
+    fontWeight:"bold",
+  },
+  discount:{
+    flexDirection:'row',
+    justifyContent:'center'
+  },
+  cupon:{
+    width:100,
     borderWidth: 1,
-    borderColor: '#fff',
-    fontSize:20,
-    fontWeight:"bold"
+    textAlign:"center"
+    
   },
+  cart:{
+    borderWidth: 1,
+    fontSize:22,
+    fontWeight:"bold",
+    textAlign:'center'
+  },
+  productditels:{
+    flexDirection: 'row',
+    borderWidth:1
+  },
+  product:{
+    flexDirection:"column",
+    borderWidth:1,
+    fontSize:20
+  }
 });
 export default cartScreen

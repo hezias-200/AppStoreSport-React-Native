@@ -10,7 +10,7 @@ const SportContext = (props) => {
     const [sumCart, setSumCart] = useState(0)
    
     return (
-    <DataContext.Provider value={{categories:categories,products:products,cart:cart,setCart:setCart,coupons:coupons, sumCart:sumCart ,setSumCart:setSumCart}}>
+    <DataContext.Provider value={{categories:categories,products:products,setProducts:setProducts,cart:cart,setCart:setCart,coupons:coupons, sumCart:sumCart ,setSumCart:setSumCart}}>
      {props.children}
     </DataContext.Provider>
         )

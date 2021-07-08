@@ -1,4 +1,4 @@
 export default {
-    Primary:'dimgrey',
+    Primary:'#E4FC02',
     Secondery:'gainsboro'
 }
