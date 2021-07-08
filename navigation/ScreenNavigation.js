@@ -4,7 +4,6 @@ import { createStackNavigator } from "react-navigation-stack";
 import { View } from 'react-native'
 import MainScreen from "../screens/MainScreen";
 import categoryScreen from "../screens/categoryScreen";
-import productScreen from "../screens/productScreen";
 import cartScreen from "../screens/cartScreen";
 import paymentScreen from "../screens/paymentScreen";
 import thankyou from "../screens/thankYou";
@@ -43,7 +42,8 @@ const ScreenNavigator = createStackNavigator(
                 screen: paymentScreen,
                 navigationOptions: makeHeader
             },
-            thankyou: thankyou,
+            thankyou: {
+                screen: thankyou,}
         },
     
     {
@@ -61,4 +61,3 @@ const ScreenNavigator = createStackNavigator(
 
 export default createAppContainer(ScreenNavigator);
 
-//shopping_cart - השם של האיקון לעגלת קניות

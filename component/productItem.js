@@ -31,38 +31,48 @@ const productItem = (props) =>{
 
 const styles = StyleSheet.create({
     productItem: {
-      height: 200,
-      width: 275,
-      backgroundColor: "#ccc",
-      borderRadius: 10,
-      overflow: "hidden",
-    },
-    productRow: {
-      flexDirection:"row",
-    },
-    productHeader: {
-      height: "100%",
+      flex: 1,
+      height: 400,
+      width: "100%",
+      shadowColor: "black",
+      shadowOpacity: 0.6,
+      shadowOffset: { width: 0, height: 2 },
+      shadowRadius: 10,
+      elevation: 3, // for android
+      justifyContent: "flex-end",
+      alignItems: "flex-end",
     },
     bgImage: {
-      width: "100%",
-      height: "100%",
+      width:'100%',
+      height:'100%',
+      padding:15,
+      marginTop:15,
+      marginLeft:10,
       justifyContent: "flex-end",
+      alignItems:'baseline',
     },
     // Add style to title:
     titleContainer: {
       backgroundColor: "rgba(0,0,0,0.5)", // black color, bit transparent (0.5)
       paddingVertical: 5,
-      paddingHorizontal: 12,
+      paddingHorizontal: 15,
+   
+      
+      
     },
     title: {
       fontFamily: "Revolvingdor",
-      fontSize: 14,
+      fontSize: 20,
       color: "white",
       textAlign: "center",
+    justifyContent:'center',
+
     },
     price:{
       color:"white",
-      textAlign:"center"
+      textAlign:"center",
+      fontSize:20,
+      fontWeight:"bold"
     }
   });
 

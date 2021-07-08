@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Button, TextInput, Alert } from 'react-native';
 import { DataContext } from '../data/SportContext';
 const cartScreen = props => {
-  const { cart, setCart, coupons } = useContext(DataContext)
+  const { cart, setCart, coupons, setSumCart } = useContext(DataContext)
   const [unicCart, setUnicCart] = useState([])
   const [counter, setCounter] = useState({})
   const [sumPrice, setSumPrice] = useState(0)
@@ -54,6 +54,14 @@ const cartScreen = props => {
     }
     setCart(tempCart)
   }
+  const chackCart =() =>{
+    if(sumPrice > 0){
+    props.navigation.navigate("paymentScreen")
+    setSumCart(sumPrice)
+  }
+    else
+      Alert.alert("the cart is ampty")
+  }
 
 
   useEffect(() => {
@@ -73,15 +81,19 @@ const cartScreen = props => {
     <ScrollView style={styles.container}>
       {unicCart.map(item =>
         <View style={{ flexDirection: 'row' }}>
-          <Text>{item.productName.slice(0, 40)}  Count: {counter[item.productName]} price:{item.price}</Text>
-
-
+          <Text>{item.productName.slice(0, 15)} - price:{item.price}$</Text>
+          <Text> Count: X {counter[item.productName]}</Text>
           <Button onPress={() => deleteItem(item.productName)} title="X" />
         </View>)}
-      <Text>Total Price :{sumPrice + '$'}</Text>
-      <Button title="Payment" onPress={() => props.navigation.navigate("paymentScreen")} />
-      <TextInput onChangeText={(txt) => setCouponInput(txt)} style={{ borderWidth: 1 }} />
-      <Button title="discount" onPress={discount} />
+      <Text >Total Price :{sumPrice + '$'}</Text>
+      <Text></Text>
+      <View></View>
+      <TextInput placeholder="Cupon" onChangeText={(txt) => setCouponInput(txt)} style={{ borderWidth: 1 }} />
+      <Text></Text>
+
+      <Button color={'black'} fontWeight={'bold'} title="set Discount" onPress={discount} />
+      <Text></Text>
+      <Button color={'black'} title="Payment" onPress={chackCart} />
     </ScrollView>
   );
 }
@@ -93,7 +105,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     // alignItems: 'center',
-    // justifyContent: 'center',
+  },
+  btn:{
+    backgroundColor:'black',
+    justifyContent: 'center',
+    borderRadius:10,
+    borderWidth: 1,
+    borderColor: '#fff',
+    fontSize:20,
+    fontWeight:"bold"
   },
 });
 export default cartScreen

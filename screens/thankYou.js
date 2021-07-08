@@ -1,16 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
-const MainScreen = props => {
+
+
+const thankYou = () => {
+ 
   return (
     <View style={styles.container}>
-      <Text>thank you for thr order</Text>
-      <Button
-      title="TO Category"
-      onPress={()=>{
-          props.navigation.replace('main')
-      }}/>
-    </View>
+    <Text>Thank you for thr order</Text>
+    <Button
+    title="TO Main Screen"
+    onPress={()=>{
+      props.navigation.replace("main")
+    }}/>
+  </View>
+
   );
 }
 
@@ -23,4 +27,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MainScreen
+export default thankYou
+
+
+
+

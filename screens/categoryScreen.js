@@ -36,7 +36,7 @@ const renderProductItem =({item}) =>{
       keyExtractor={(item) => item.id}
       renderItem = {renderProductItem}
       style={{width:"100%"}}
-      numColumns={2}
+      numColumns={1}
       />
     </View>
   );
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     fontSize:20
-    
   },
 });
 

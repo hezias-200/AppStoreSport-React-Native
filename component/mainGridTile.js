@@ -5,10 +5,10 @@ import { StyleSheet, Text, View, TouchableOpacity ,ImageBackground} from 'react-
 const mainGrideTile =(props) => {
     return (
       <TouchableOpacity
-        style={styles.gridItem}
+        style={styles.container}
         onPress={props.onSelect}
         >
-        <View style={{...styles.container,backgroundColor:props.color}}>
+        <View>
           <ImageBackground source={{uri: props.image}} style={styles.bgImage}>
           <Text style={styles.title} >{props.title}</Text>
           </ImageBackground>
@@ -19,37 +19,29 @@ const mainGrideTile =(props) => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  gridItem: {
-    flex: 1,
-    margin: 15,
-    height: 150
-  },
   container:{
     flex:1,
-    height: 200,
-    width: 275,
+    height:230,
+    width: "50%",
     borderRadius:15,
-    shadowColor:"black",
     shadowOpacity:0.6,
     shadowOffset:{width:0, height:2},
-    shadowRadius:10,
-    elevation:3,
+    shadowRadius:2,
+    elevation:5,
     justifyContent:'center',
     alignItems:'baseline'
   },
   title:{
     fontFamily:"Revolvingdor",
     fontSize:22,
-    margin:10
+    color:"#A4C639",
   },
   bgImage:{
-    width:'100%',
-    height:'100%'
+    width:'95%',
+    height:'95%',
+    padding:15,
+    marginTop:30,
+    marginLeft:25
   }
 });
 
